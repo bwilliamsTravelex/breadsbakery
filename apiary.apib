@@ -3,78 +3,74 @@ HOST: http://polls.apiblueprint.org/
 
 # BreadBakery
 
-Polls is a simple API allowing consumers to view polls and vote in them.
+BreadBakery is a api to keep track of stock and goods that can be bought
+at Bread's only Bakery in London.
 
-## Questions Collection [/questions]
+## Questions Collection [/stock]
 
-### List All Questions [GET]
+### List All Stock [GET]
 
 + Response 200 (application/json)
 
+
         [
             {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 2048
-                    }, {
-                        "choice": "Python",
-                        "votes": 1024
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 512
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 256
-                    }
-                ]
+                "quantity": 20,
+                "item": {
+                    "name": "Bread",
+                    "price": 1.2,
+                    "id": "ecf41802-c810-11e8-a8d5-f2801f1b9fd1"
+                }
+            },
+            {
+                "quantity": 5,
+                "item": {
+                    "name": "Bun",
+                    "price": 2.5,
+                    "id": "ecf41fd2-c810-11e8-a8d5-f2801f1b9fd1"
+                }
+            },
+            {
+                "quantity": 12,
+                "item": {
+                    "name": "Baguette",
+                    "price": 4.5,
+                    "id": "ecf41e74-c810-11e8-a8d5-f2801f1b9fd1"
+                }
+            },
+            {
+                "quantity": 42,
+                "item": {
+                    "name": "Panini",
+                    "price": 1.99,
+                    "id": "ecf41aaa-c810-11e8-a8d5-f2801f1b9fd1"
+                }
+            },
+            {
+                "quantity": 23,
+                "item": {
+                    "name": "Pie",
+                    "price": 6.5,
+                    "id": "ecf420fe-c810-11e8-a8d5-f2801f1b9fd1"
+                }
             }
         ]
+        
+### Get Stock of an item ID [GET /{id}]
 
-### Create a New Question [POST]
++ Parameters
 
-You may create your own question using this action. It takes a JSON
-object containing a question and a collection of answers in the
-form of choices.
+    + id (required, uuid, `ecf41802-c810-11e8-a8d5-f2801f1b9fd1`) ... Item ID (`id`)
 
-+ Request (application/json)
++ Response (application/vnd.api+json)
 
-        {
-            "question": "Favourite programming language?",
-            "choices": [
-                "Swift",
-                "Python",
-                "Objective-C",
-                "Ruby"
-            ]
+
+    {
+        "quantity": 20,
+        "item": {
+            "name": "Bread",
+            "price": 1.2,
+            "id": "ecf41802-c810-11e8-a8d5-f2801f1b9fd1"
         }
-
-+ Response 201 (application/json)
-
-    + Headers
-
-            Location: /questions/2
-
-    + Body
-
-            {
-                "question": "Favourite programming language?",
-                "published_at": "2015-08-05T08:40:51.620Z",
-                "choices": [
-                    {
-                        "choice": "Swift",
-                        "votes": 0
-                    }, {
-                        "choice": "Python",
-                        "votes": 0
-                    }, {
-                        "choice": "Objective-C",
-                        "votes": 0
-                    }, {
-                        "choice": "Ruby",
-                        "votes": 0
-                    }
-                ]
-            }
+    }
+    

@@ -1,4 +1,4 @@
-package com.breadbakery.handlers;// Copyright (c) 2018 Travelex Ltd
+package com.breadbakery.model;// Copyright (c) 2018 Travelex Ltd
 
 import com.breadbakery.model.StoreItem;
 import lombok.AllArgsConstructor;

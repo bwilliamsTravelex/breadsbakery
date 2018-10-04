@@ -1,5 +1,6 @@
 package com.breadbakery.handlers;// Copyright (c) 2018 Travelex Ltd
 
+import com.breadbakery.model.StockItem;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
