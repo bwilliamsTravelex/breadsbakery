@@ -1,5 +1,4 @@
 FORMAT: 1A
-HOST: http://polls.apiblueprint.org/
 
 # BreadBakery
 
@@ -10,10 +9,18 @@ at Bread's only Bakery in London.
 
 ### List All Stock [GET]
 
+
 + Response 200 (application/json)
 
+        + Headers
+        connection: close
+        content-type: application/json;charset=UTF-8
+        date: Thu, 04 Oct 2018 22:06:09 GMT
+   
+    + Body
 
-        [
+
+            [
             {
                 "quantity": 20,
                 "item": {
@@ -54,7 +61,7 @@ at Bread's only Bakery in London.
                     "id": "ecf420fe-c810-11e8-a8d5-f2801f1b9fd1"
                 }
             }
-        ]
+            ]
         
 ### Get Stock of an item ID [GET /{id}]
 
@@ -62,15 +69,21 @@ at Bread's only Bakery in London.
 
     + id (required, uuid, `ecf41802-c810-11e8-a8d5-f2801f1b9fd1`) ... Item ID (`id`)
 
-+ Response (application/vnd.api+json)
++ Response 200 (application/vnd.api+json)
 
-
-    {
-        "quantity": 20,
-        "item": {
-            "name": "Bread",
-            "price": 1.2,
-            "id": "ecf41802-c810-11e8-a8d5-f2801f1b9fd1"
-        }
-    }
+            + Headers
+     connection: close
+     content-type: application/json;charset=UTF-8
+     date: Thu, 04 Oct 2018 22:06:09 GMT
+     
+    + Body
     
+    
+            {
+                "quantity": 20,
+                "item": {
+                 "name": "Bread",
+                 "price": 1.2,
+                 "id": "ecf41802-c810-11e8-a8d5-f2801f1b9fd1"
+              }
+            }
