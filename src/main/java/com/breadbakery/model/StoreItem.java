@@ -14,5 +14,5 @@ public class StoreItem {
     private String name;
     private Double price;
     private UUID id;
-
+    private ItemType type;
 }

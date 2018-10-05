@@ -1,0 +1,80 @@
+FORMAT: 1A
+
+# BreadBakery
+
+BreadBakery is a api to keep track of stock and goods that can be bought
+at Bread's only Bakery in London.
+```
+ {
+     "quantity": 20,
+     "item": {
+         "name": "Bread",
+         "price": 1.2,
+         "id": "ecf41802-c810-11e8-a8d5-f2801f1b9fd1",
+         "type": "PERISHABLE"
+     }
+ }
+```
+
+### Stock API [/stock]
+
+## List All Stock [GET]
+
+Lists all the stock with quantity and the different store items.
+
++ Response 200 (application/json;charset=UTF-8)
+        
+    + Attributes (Multiple stock item)
+    
+## Get Stock of an item ID [GET /stock/{id}]
+
++ Request
+
+    + Parameters
+    
+        + id: `ecf41802-c810-11e8-a8d5-f2801f1b9fd1` (string, required) - ID of the stock item requested
+        
++ Response 200 (application/json;charset=UTF-8) - When the item has been found and will return.
+                
+    + Attributes (Single stock item)
+
++ Response 404 - When the Item cannot be found
+    
+###  Post stock of a new Item [POST]
+
++ Request (application/json)
+    + Body
+    
+            {
+                "quantity": 42,
+                "item": {
+                    "name": "Frozen Pizza",
+                    "price": 32,
+                    "id": "ecf41baa-c810-11e8-a8d5-f2801f1b9fd1",
+                    "type": "FROZEN"
+                }
+            }
+
++ Response 200
+
+### Data Structures
+
+## Multiple stock item
++ `stock` (array[Single stock item], required)
+
+## Single stock item
++ `quantity` (number, required)
++ `item` (Single store item)
+
+## Single store item
++ `name` (string, required)
+The name of the Item
++ `price` (number, required)
+The price of the Item
++ `id` (string, required)
+The ID of the item. Used for GET requests.
++ `type` (enum[string], required)
+    + Members
+        + PERISHABLE
+        + NON_PERISHABLE
+        + FROZEN
